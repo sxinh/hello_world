@@ -1,6 +1,8 @@
 package com.hit.demo;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 /* created by hezixin on 2020/12/4 */
 
 public class PrimitiveTypeTest {
@@ -76,8 +78,8 @@ public class PrimitiveTypeTest {
         System.out.println("最大值：Character.MAX_VALUE="
                 + (int) Character.MAX_VALUE);
 
-        char c1='a';//定义一个char类型
-        int i1 = c1;//char自动类型转换为int
+        char c11='a';//定义一个char类型
+        int i1 = c11;//char自动类型转换为int
         System.out.println("char自动类型转换为int后的值等于"+i1);
         char c2 = 'A';//定义一个char类型
         int i2 = c2+1;//char 类型和 int 类型计算
@@ -124,5 +126,33 @@ public class PrimitiveTypeTest {
         SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
         System.out.println("当前时间为: " + ft.format(date));
+
+        String months[] = {
+                "Jan", "Feb", "Mar", "Apr",
+                "May", "Jun", "Jul", "Aug",
+                "Sep", "Oct", "Nov", "Dec"};
+
+        int year;
+        // 初始化 Gregorian 日历
+        // 使用当前时间和日期
+        // 默认为本地时间和时区
+        GregorianCalendar gcalendar = new GregorianCalendar();
+        // 显示当前时间和日期的信息
+        System.out.print("Date: ");
+        System.out.print(months[gcalendar.get(Calendar.MONTH)]);
+        System.out.print(" " + gcalendar.get(Calendar.DATE) + " ");
+        System.out.println(year = gcalendar.get(Calendar.YEAR));
+        System.out.print("Time: ");
+        System.out.print(gcalendar.get(Calendar.HOUR) + ":");
+        System.out.print(gcalendar.get(Calendar.MINUTE) + ":");
+        System.out.println(gcalendar.get(Calendar.SECOND));
+
+        // 测试当前年份是否为闰年
+        if(gcalendar.isLeapYear(year)) {
+            System.out.println("当前年份是闰年");
+        }
+        else {
+            System.out.println("当前年份不是闰年");
+        }
     }
 }
